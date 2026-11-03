@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 
+from app.api.users import router as users_router
+
 app = FastAPI(
     title="ReviewX API",
-    description="AI-powered GitHub Code Review Platform",
+    description="AI-powered GitHub Pull Request Code Review Platform",
     version="1.0.0"
 )
 
@@ -10,7 +12,8 @@ app = FastAPI(
 @app.get("/")
 def home():
     return {
-        "message": "Welcome to ReviewX"
+        "message": "Welcome to ReviewX",
+        "status": "running"
     }
 
 
@@ -19,3 +22,6 @@ def health():
     return {
         "status": "healthy"
     }
+
+
+app.include_router(users_router)
