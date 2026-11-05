@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from app.api.users import router as users_router
 from app.api.webhooks import router as webhooks_router
 from app.api.pull_requests import router as pull_requests_router
+from app.api.analysis import router as analysis_router
 
 app = FastAPI(
     title="ReviewX API",
@@ -29,3 +30,4 @@ def health():
 app.include_router(users_router)
 app.include_router(webhooks_router)
 app.include_router(pull_requests_router)
+app.include_router(analysis_router)
